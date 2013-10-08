@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Programme TV</title>
+	<meta name="viewport" content="initial-scale=1.0">
+	<link rel="apple-touch-icon" href="touch-icon-iphone.png" />
+	<link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png" />
+	<link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+	<link rel="stylesheet" type="text/css" href="css/screen.css">
+</head>
+<body>
+	<div class="app">
+		<header class="header loading">
+			<span class="loading">Chargement...</span>
+			<button class="reload">Recharger</button>
+			<span class="title"></span>
+		</header>
+		<ul class="shows">
+		</ul>
+	</div>
+
+	<script type="text/javascript" src="vendor/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript" src="vendor/underscore-min.js"></script>
+	<script type="text/javascript" src="vendor/backbone-min.js"></script>
+	<script type="text/javascript" src="vendor/burry.js"></script>
+	<script type="text/javascript" src="vendor/FeedParser.js"></script>
+	<script type="text/javascript" src="vendor/moment+langs.min.js"></script>
+
+	<script type="text/javascript" src="app/models/show-model.js"></script>
+	<script type="text/javascript" src="app/collections/show-collection.js"></script>
+	<script type="text/javascript" src="app/views/show-view.js"></script>
+	<script type="text/javascript" src="app/views/show-collection-view.js"></script>
+	<script type="text/javascript" src="app/views/app-view.js"></script>
+	<script type="text/javascript" src="app/app.js"></script>
+</body>
+</html>

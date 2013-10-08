@@ -1,0 +1,1 @@
+* make the app offline with appCache
