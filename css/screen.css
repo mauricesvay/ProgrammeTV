@@ -4,7 +4,7 @@
 }
 body, 
 button {
-	font-family: "Open Sans", Arial, sans-serif;
+	font-family: "Source Sans Pro", Arial, sans-serif;
 }
 .header {
 	height: 44px;
@@ -36,6 +36,9 @@ button.reload {
 }
 .shows {
 	margin-top: 44px;
+	display: table;
+	table-layout: fixed;
+	width: 100%;
 }
 	.shows li {
 		list-style: none;
@@ -43,20 +46,28 @@ button.reload {
 		height: 88px;
 		overflow: hidden;
 		border-bottom: 1px solid #EEE;
+		display: table-row;
 	}
 		.channel {
-			display: block;
-			float: left;
+			/*display: block;
+			float: left;*/
+			display: table-cell;
+			width: 100px;
+			border-bottom: 1px solid #EEE;
 		}
 			.channel img {
 				width: 88px;
 				height: 88px;
 			}
 		.info {
+			display: table-cell;
+			vertical-align: middle;
 			overflow: auto;
 			padding: 0.5em;
+			border-bottom: 1px solid #EEE;
 		}
 			.shows .title {
+				font-weight: 600;
 				display: block;
 				color: #34495e;
 				font-size: 1.25em;

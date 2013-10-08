@@ -18,6 +18,7 @@ $(function () {
         },
         render: function(date) {
             $('.header .title').text(
+                //@FIXME : use timezone
                 moment(this.date).lang("fr").format("dddd DD MMMM")
             );
             $('.header')
@@ -53,6 +54,7 @@ $(function () {
         checkForUpdate: function() {
             var _this = this;
             //Outdated cache ?
+            //@FIXME : use timezone
             var scheduleDate = moment(this.date).valueOf();
             var today = moment({hour: 0, minute: 0}).valueOf();
             if (scheduleDate < today) {
