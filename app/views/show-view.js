@@ -18,6 +18,7 @@ $(function () {
 				"<span class='time'>" + this.model.get('time') + "</span> " +
 				"<div class='description'>" + /*this.model.get('description')*/'' + "</div></div>"
 			);
+			return this;
 		}
 	});
 });
