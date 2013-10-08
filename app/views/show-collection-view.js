@@ -6,6 +6,7 @@ $(function () {
         el : $('.shows'),
         initialize: function() {
             var _this = this;
+            this.listenTo(this.model, 'sync', this.render);
         },
         render: function renderShowCollectionView() {
             var _this = this;

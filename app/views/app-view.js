@@ -42,7 +42,6 @@ $(function () {
                         .removeClass('loading')
                         .removeClass('reload')
                         .addClass('title');
-                    app.showsView.render();
                     _this.checkForUpdate();
                 },
                 error: _this.refreshError
@@ -59,9 +58,6 @@ $(function () {
             if (scheduleDate < today) {
                 app.shows.fetch({
                     cache:false,
-                    success: function(response) {
-                        app.showsView.render();
-                    },
                     error: _this.refreshError
                 });
             }
