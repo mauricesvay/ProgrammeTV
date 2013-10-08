@@ -4,7 +4,6 @@
     "launch_path": "index.html",
     "description": "A simple mobile app to get the french TV schedule for tonight",
     "icons": {
-        "16": "/images/logo16.png",
         "32": "/images/logo32.png",
         "48": "/images/logo48.png",
         "64": "/images/logo64.png",
