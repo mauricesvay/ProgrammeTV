@@ -14,8 +14,10 @@ $(function () {
             this.model.each(function(item){
                 var itemView = new app.ShowView({model:item});
                 itemView.render();
+                //@TODO : group append operations
                 $(_this.el).append(itemView.el);
             });
+            return this;
         }
     });
 });
