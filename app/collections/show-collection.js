@@ -30,13 +30,8 @@ var app = app || {};
             for (var i=0, l=app.feed.items.length; i<l; i++) {
                 item        = app.feed.items[i];
 
-                part.innerHTML = item.description;
-                var img = part.getElementsByTagName('img');
-                for (var j=0;j<img.length;j++) {
-                    img[j].parentNode.removeChild(img[j]);
-                }
-                description = $.trim(part.innerHTML);
-                
+                //prevent image loading
+                description = item.description.replace(/src=/g,'data-src=');
                 channel     = $.trim(item.title.substr(0, item.title.indexOf(':')));
                 titlePart   = $.trim(item.title.substr(item.title.indexOf(':') + 1));
                 time        = titlePart.substr(0, titlePart.indexOf(' '));
