@@ -11,9 +11,10 @@ var app = app || {};
 			var out = [];
 
 			var xml = $.parseXML($.trim(response));
-            app.feed.parse(xml);
+            var feed = new FeedParser();
+            feed.parse(xml);
 
-            app.dispatcher.trigger('current', app.feed.date);
+            app.dispatcher.trigger('current', feed.date);
 
             var item;
             var title;
@@ -25,8 +26,8 @@ var app = app || {};
             var time;
             var titlePart;
             var models = [];
-            for (var i=0, l=app.feed.items.length; i<l; i++) {
-                item        = app.feed.items[i];
+            for (var i=0, l=feed.items.length; i<l; i++) {
+                item        = feed.items[i];
 
                 //prevent image loading
                 description = item.description.replace(/src=/g,'data-src=');

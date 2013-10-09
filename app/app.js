@@ -54,7 +54,6 @@ $(function () {
         }
     };
 
-    app.feed = new FeedParser();
     app.dispatcher = _.clone(Backbone.Events);
 
     app.shows = new app.ShowCollection();
