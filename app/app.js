@@ -10,6 +10,7 @@ $(function () {
 
     app.cache = new Burry.Store('ProgrammeTV');
 
+    //@TODO : move to ShowCollection
     //Custom Backbone sync
     Backbone.sync = function(method, model, options) {
         options || (options = {});
@@ -53,7 +54,6 @@ $(function () {
         }
     };
 
-    app.feed = new FeedParser();
     app.dispatcher = _.clone(Backbone.Events);
 
     app.shows = new app.ShowCollection();

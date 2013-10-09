@@ -58,8 +58,9 @@ $(function () {
             var scheduleDate = moment(this.date).valueOf();
             var today = moment({hour: 0, minute: 0}).valueOf();
             if (scheduleDate < today) {
+                //@FIXME : view isn't refreshed
                 app.shows.fetch({
-                    cache:false,
+                    cache: false,
                     error: _this.refreshError
                 });
             }

@@ -5,17 +5,16 @@ var app = app || {};
 
 	app.ShowCollection = Backbone.Collection.extend({
 		model: app.ShowModel,
-        // feed: 'http://www.zap-programme.fr/rss/rss.php?bouquet=2',
         url: 'http://www.zap-programme.fr/rss/rss.php?bouquet=2',
-        // localStorage: new Backbone.LocalStorage("ProgrammeTV"),
 
 		parse: function(response, options) {
 			var out = [];
 
 			var xml = $.parseXML($.trim(response));
-            app.feed.parse(xml);
+            var feed = new FeedParser();
+            feed.parse(xml);
 
-            app.dispatcher.trigger('current', app.feed.date);
+            app.dispatcher.trigger('current', feed.date);
 
             var item;
             var title;
@@ -27,16 +26,11 @@ var app = app || {};
             var time;
             var titlePart;
             var models = [];
-            for (var i=0, l=app.feed.items.length; i<l; i++) {
-                item        = app.feed.items[i];
+            for (var i=0, l=feed.items.length; i<l; i++) {
+                item        = feed.items[i];
 
-                part.innerHTML = item.description;
-                var img = part.getElementsByTagName('img');
-                for (var j=0;j<img.length;j++) {
-                    img[j].parentNode.removeChild(img[j]);
-                }
-                description = $.trim(part.innerHTML);
-                
+                //prevent image loading
+                description = item.description.replace(/src=/g,'data-src=');
                 channel     = $.trim(item.title.substr(0, item.title.indexOf(':')));
                 titlePart   = $.trim(item.title.substr(item.title.indexOf(':') + 1));
                 time        = titlePart.substr(0, titlePart.indexOf(' '));
