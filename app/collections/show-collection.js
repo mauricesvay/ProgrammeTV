@@ -5,9 +5,7 @@ var app = app || {};
 
 	app.ShowCollection = Backbone.Collection.extend({
 		model: app.ShowModel,
-        // feed: 'http://www.zap-programme.fr/rss/rss.php?bouquet=2',
         url: 'http://www.zap-programme.fr/rss/rss.php?bouquet=2',
-        // localStorage: new Backbone.LocalStorage("ProgrammeTV"),
 
 		parse: function(response, options) {
 			var out = [];

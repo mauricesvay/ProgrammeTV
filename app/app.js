@@ -10,6 +10,7 @@ $(function () {
 
     app.cache = new Burry.Store('ProgrammeTV');
 
+    //@TODO : move to ShowCollection
     //Custom Backbone sync
     Backbone.sync = function(method, model, options) {
         options || (options = {});
