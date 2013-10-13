@@ -1,16 +1,58 @@
 var app = app || {};
 
 (function () {
-	'use strict';
+    'use strict';
 
-	app.ShowCollection = Backbone.Collection.extend({
-		model: app.ShowModel,
+    app.ShowCollection = Backbone.Collection.extend({
+        model: app.ShowModel,
         url: 'http://www.zap-programme.fr/rss/rss.php?bouquet=2',
 
-		parse: function(response, options) {
-			var out = [];
+        sync : function(method, model, options) {
+            options || (options = {});
 
-			var xml = $.parseXML($.trim(response));
+            switch (method) {
+                case 'create':
+                    break;
+
+                case 'update':
+                    break;
+
+                case 'delete':
+                    break;
+
+                case 'read':
+                    var data = app.cache.get('feed');
+                    if (options.cache && data) {
+                        if (options.success) {
+                            options.success(data);
+                        }
+                    } else {
+                        $.ajax({
+                            method: 'get',
+                            dataType : 'text',
+                            url : model.url,
+                            success : function(data, status, xhr) {
+                                app.cache.flush();
+                                if (options.success) {
+                                    app.cache.set('feed', data);
+                                    options.success(data);
+                                }
+                            },
+                            error : function() {
+                                if (options.error) {
+                                    options.error();
+                                }
+                            }
+                        });
+                    }
+                    break;
+            }
+        },
+
+        parse: function(response, options) {
+            var out = [];
+
+            var xml = $.parseXML($.trim(response));
             var feed = new FeedParser();
             feed.parse(xml);
 
@@ -44,7 +86,7 @@ var app = app || {};
             }
 
             return out;
-		}
-	});
+        }
+    });
 
 })();
