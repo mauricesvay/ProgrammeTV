@@ -18,21 +18,17 @@ button {
 	text-transform: uppercase;
 	color: #777;
 }
-.header .loading,
-.header .reload,
-.header .title {
-	display: none;
-}
-.loading .loading,
-.reload .reload,
-.title .title {
-	display: inline;
-}
-button.reload {
-	border: 1px solid #888;
+.reload {
+	position: absolute;
+	right: 6px;
+	top: 6px;
+	border: 1px solid #CCC;
 	padding: 0.5em;
 	background: transparent;
-	font-size: 1em;
+	color: #666;
+}
+.loading {
+	display: none;
 }
 .shows {
 	margin-top: 44px;
