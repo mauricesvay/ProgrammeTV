@@ -1,10 +1,10 @@
 var app = app || {};
 
 (function () {
-	'use strict';
+    'use strict';
 
-	app.ShowCollection = Backbone.Collection.extend({
-		model: app.ShowModel,
+    app.ShowCollection = Backbone.Collection.extend({
+        model: app.ShowModel,
         url: 'http://www.zap-programme.fr/rss/rss.php?bouquet=2',
 
         sync : function(method, model, options) {
@@ -49,10 +49,10 @@ var app = app || {};
             }
         },
 
-		parse: function(response, options) {
-			var out = [];
+        parse: function(response, options) {
+            var out = [];
 
-			var xml = $.parseXML($.trim(response));
+            var xml = $.parseXML($.trim(response));
             var feed = new FeedParser();
             feed.parse(xml);
 
@@ -86,7 +86,7 @@ var app = app || {};
             }
 
             return out;
-		}
-	});
+        }
+    });
 
 })();

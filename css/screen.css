@@ -1,84 +1,84 @@
 * {
-	margin: 0;
-	padding: 0;
+    margin: 0;
+    padding: 0;
 }
 body, 
 button {
-	font-family: "Source Sans Pro", Arial, sans-serif;
+    font-family: "Source Sans Pro", Arial, sans-serif;
 }
 .header {
-	height: 44px;
-	padding-top: 20px;
-	line-height: 44px;
-	top: 0;
-	left: 0;
-	right: 0;
-	position: fixed;
-	text-align: center;
-	text-transform: uppercase;
-	background: #d60023;
-	color: #FFF;
+    height: 44px;
+    padding-top: 20px;
+    line-height: 44px;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    text-align: center;
+    text-transform: uppercase;
+    background: #d60023;
+    color: #FFF;
 }
 .reload {
-	position: absolute;
-	width: 44px;
-	height: 44px;
-	right: 0px;
-	top: 20px;
-	border: 0;
-	padding: 0.5em;
-	background: transparent;
-	color: #666;
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    right: 0px;
+    top: 20px;
+    border: 0;
+    padding: 0.5em;
+    background: transparent;
+    color: #666;
 }
 .loading {
-	display: none;
+    display: none;
 }
 .shows {
-	margin-top: 64px;
-	display: table;
-	table-layout: fixed;
-	width: 100%;
+    margin-top: 64px;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
 }
-	.shows li {
-		list-style: none;
-		display: block;
-		height: 88px;
-		overflow: hidden;
-		border-bottom: 1px solid #EEE;
-		display: table-row;
-	}
-		.channel {
-			/*display: block;
-			float: left;*/
-			display: table-cell;
-			width: 100px;
-			border-bottom: 1px solid #EEE;
-		}
-			.channel img {
-				width: 88px;
-				height: 88px;
-				display: block;
-			}
-		.info {
-			display: table-cell;
-			vertical-align: middle;
-			overflow: auto;
-			padding: 0.5em;
-			border-bottom: 1px solid #EEE;
-		}
-			.shows .title {
-				font-weight: 600;
-				display: block;
-				color: #222;
-				font-size: 1.25em;
-			}
-			.shows .smaller {
-				font-size: 1em;
-			}
-			.time {
-				color: #888;
-				float: left;
-			}
-			.description {
-				color: #888;
-			}
+    .shows li {
+        list-style: none;
+        display: block;
+        height: 88px;
+        overflow: hidden;
+        border-bottom: 1px solid #EEE;
+        display: table-row;
+    }
+        .channel {
+            /*display: block;
+            float: left;*/
+            display: table-cell;
+            width: 100px;
+            border-bottom: 1px solid #EEE;
+        }
+            .channel img {
+                width: 88px;
+                height: 88px;
+                display: block;
+            }
+        .info {
+            display: table-cell;
+            vertical-align: middle;
+            overflow: auto;
+            padding: 0.5em;
+            border-bottom: 1px solid #EEE;
+        }
+            .shows .title {
+                font-weight: 600;
+                display: block;
+                color: #222;
+                font-size: 1.25em;
+            }
+            .shows .smaller {
+                font-size: 1em;
+            }
+            .time {
+                color: #888;
+                float: left;
+            }
+            .description {
+                color: #888;
+            }
