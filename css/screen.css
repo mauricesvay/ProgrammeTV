@@ -8,21 +8,24 @@ button {
 }
 .header {
 	height: 44px;
+	padding-top: 20px;
+	line-height: 44px;
 	top: 0;
 	left: 0;
 	right: 0;
 	position: fixed;
-	line-height: 44px;
 	text-align: center;
-	background: #F3F3F3;
 	text-transform: uppercase;
-	color: #777;
+	background: #d60023;
+	color: #FFF;
 }
 .reload {
 	position: absolute;
-	right: 6px;
-	top: 6px;
-	border: 1px solid #CCC;
+	width: 44px;
+	height: 44px;
+	right: 0px;
+	top: 20px;
+	border: 0;
 	padding: 0.5em;
 	background: transparent;
 	color: #666;
@@ -31,7 +34,7 @@ button {
 	display: none;
 }
 .shows {
-	margin-top: 44px;
+	margin-top: 64px;
 	display: table;
 	table-layout: fixed;
 	width: 100%;
@@ -54,6 +57,7 @@ button {
 			.channel img {
 				width: 88px;
 				height: 88px;
+				display: block;
 			}
 		.info {
 			display: table-cell;
@@ -65,14 +69,14 @@ button {
 			.shows .title {
 				font-weight: 600;
 				display: block;
-				color: #34495e;
+				color: #222;
 				font-size: 1.25em;
 			}
 			.shows .smaller {
 				font-size: 1em;
 			}
 			.time {
-				color: #34495e;
+				color: #888;
 				float: left;
 			}
 			.description {
