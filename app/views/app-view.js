@@ -6,13 +6,19 @@ $(function () {
         el: $('body'),
         className : 'app-view',
         events: {
-            'click .reload' : 'refresh'
+            'click .reload' : 'checkForUpdate'
         },
         initialize : function() {
             var _this = this;
             app.dispatcher.on('current', function(date){
                 _this.date = date;
                 _this.render();
+            });
+            app.dispatcher.on('loading:start', function(){
+                _this.loadingStart();
+            });
+            app.dispatcher.on('loading:end', function(){
+                _this.loadingEnd();
             });
             this.refresh();
         },
@@ -21,28 +27,23 @@ $(function () {
                 //@FIXME : use timezone
                 moment(this.date).lang("fr").format("dddd DD MMMM")
             );
-            $('.header')
-                .removeClass('loading')
-                .removeClass('reload')
-                .addClass('title');
+        },
+        loadingStart: function() {
+            $('.loading').show();
+            $('.action').hide();
+        },
+        loadingEnd: function() {
+            $('.loading').hide();
+            $('.action').show();
         },
         /**
          * Load feed and display
          */
         refresh: function() {
             var _this = this;
-            $('.header')
-                .removeClass('reload')
-                .removeClass('title')
-                .addClass('loading');
             app.shows.fetch({
                 cache: true,
                 success: function(response) {
-                    $('div.reload').hide();
-                    $('.header')
-                        .removeClass('loading')
-                        .removeClass('reload')
-                        .addClass('title');
                     _this.checkForUpdate();
                 },
                 error: _this.refreshError
@@ -53,28 +54,33 @@ $(function () {
          */
         checkForUpdate: function() {
             var _this = this;
+            app.dispatcher.trigger('loading:start');
             //Outdated cache ?
             //@FIXME : use timezone
             var scheduleDate = moment(this.date).valueOf();
             var today = moment({hour: 0, minute: 0}).valueOf();
             if (scheduleDate < today) {
-                //@FIXME : view isn't refreshed
-                app.shows.fetch({
-                    cache: false,
-                    error: _this.refreshError
-                });
+                setTimeout(function(){
+                    app.shows.fetch({
+                        cache: false,
+                        success: function(){
+                            app.dispatcher.trigger('loading:end');
+                        },
+                        error: _this.refreshError
+                    });
+                }, 1000);
+            } else {
+                setTimeout(function(){
+                    app.dispatcher.trigger('loading:end');
+                }, 1000);
             }
         },
         /**
          * Loading error
          */
         refreshError: function(){
-            $('div.reload').show();
-            $('.header')
-                .removeClass('loading')
-                .removeClass('title')
-                .addClass('reload');
-            alert('Erreur de chargement');
+            app.dispatcher.trigger('loading:end');
+            console.log('Erreur de chargement');
         }
     });
 });
