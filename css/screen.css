@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
 }
-body, 
+body,
 button {
     font-family: "Source Sans Pro", Arial, sans-serif;
 }
@@ -18,6 +18,10 @@ button {
     text-transform: uppercase;
     background: #d60023;
     color: #FFF;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .reload {
     position: absolute;
@@ -32,6 +36,18 @@ button {
 }
 .loading {
     display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    padding: 15px;
+
+    line-height: 0;
+    border-radius: 6px;
+    background: rgba(0,0,0,.7);
 }
 .shows {
     margin-top: 64px;
@@ -53,6 +69,10 @@ button {
             display: table-cell;
             width: 100px;
             border-bottom: 1px solid #EEE;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
             .channel img {
                 width: 88px;

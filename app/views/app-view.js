@@ -30,11 +30,9 @@ $(function () {
         },
         loadingStart: function() {
             $('.loading').show();
-            $('.action').hide();
         },
         loadingEnd: function() {
             $('.loading').hide();
-            $('.action').show();
         },
         /**
          * Load feed and display

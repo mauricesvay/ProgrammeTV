@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Programme TV</title>
     <meta name="viewport" content="initial-scale=1.0">
-    
+
     <!-- iOS -->
     <link rel="apple-touch-icon" href="touch-icon-iphone.png" />
     <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png" />
@@ -22,11 +22,8 @@
 <body>
     <div class="app">
         <header class="header">
-            <span class="title"></span>
+            <span class="title"></span> : Soirée
             <button class="reload">
-                <span class="loading">
-                    <img src="css/images/loader.gif" width="16" height="16" alt=""/>
-                </span>
                 <span class="action">
                     <img src="css/images/reload.png" width="16" height="16" alt=""/>
                 </span>
@@ -34,6 +31,9 @@
         </header>
         <ul class="shows">
         </ul>
+        <span class="loading">
+            <img src="css/images/loader.gif" width="16" height="16" alt=""/>
+        </span>
     </div>
 
     <script type="text/template" id="tpl-show-view">
@@ -43,7 +43,9 @@
         <div class="info">
             <strong class="title <%= titleSize %>"><%= title %></strong>
             <span class="time"><%= time %></span>
+            <!--
             <div class="description"><%= description %></div>
+            -->
         </div>
     </script>
 
