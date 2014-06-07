@@ -10,13 +10,15 @@ $(function () {
         },
         render: function renderShowCollectionView() {
             var _this = this;
+            var fragment = document.createDocumentFragment();
+
             $(this.el).empty();
             this.model.each(function(item){
                 var itemView = new app.ShowView({model:item});
                 itemView.render();
-                //@TODO : group append operations
-                $(_this.el).append(itemView.el);
+                fragment.appendChild(itemView.el);
             });
+            this.$el.html(fragment);
             return this;
         }
     });
