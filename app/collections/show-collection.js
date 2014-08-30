@@ -5,7 +5,7 @@ var app = app || {};
 
     app.ShowCollection = Backbone.Collection.extend({
         model: app.ShowModel,
-        url: 'http://www.zap-programme.fr/rss/rss.php?bouquet=2',
+        url: 'http://www.telez.fr/programmeTv/flux-rss',
 
         sync : function(method, model, options) {
             options || (options = {});
@@ -51,6 +51,27 @@ var app = app || {};
 
         parse: function(response, options) {
             var out = [];
+            var whitelist = [
+                'arte',
+                'bfmtv',
+                'canal',
+                'd17',
+                'd8',
+                'france2',
+                'france3',
+                'france4',
+                'france5',
+                'franceo',
+                'gulli',
+                'itele',
+                'lcp',
+                'm6',
+                'nrj12',
+                'nt1',
+                'tf1',
+                'tmc',
+                'w9'
+            ];
 
             var xml = $.parseXML($.trim(response));
             var feed = new FeedParser();
@@ -68,20 +89,33 @@ var app = app || {};
             var time;
             var titlePart;
             var models = [];
+            var filter = document.createElement("div");
             for (var i=0, l=feed.items.length; i<l; i++) {
                 item        = feed.items[i];
 
+                channel     = $.trim(item.title).toLowerCase().replace(/[^a-zA-Z0-9]/,'');
+                if ( -1 === whitelist.indexOf(channel) ) {
+                    continue;
+                }
+
                 //prevent image loading
-                description = item.description.replace(/src=/g,'data-src=');
-                channel     = $.trim(item.title.substr(0, item.title.indexOf(':')));
-                titlePart   = $.trim(item.title.substr(item.title.indexOf(':') + 1));
-                time        = titlePart.substr(0, titlePart.indexOf(' '));
-                title       = $.trim(titlePart.substr(titlePart.indexOf(' ')));
+                description = item.description.substr(item.description.indexOf('<div class="enclosures">')).replace(/src=/g,'data-src=');
+                filter.innerHTML = description;
+                description = filter.textContent || filter.innerText || "";
+
+                time        = new Date(item.date);
+
+                title       = $.trim(item.description.substr(0, item.description.indexOf('<br/>')));
+                filter.innerHTML = title;
+                title = filter.textContent || filter.innerText || "";
+
+                console.log(channel);
+
                 out.push({
                     description: description,
                     title: title,
                     channel: channel,
-                    time: time
+                    time: time.getHours() + ':' + time.getMinutes()
                 });
             }
 
