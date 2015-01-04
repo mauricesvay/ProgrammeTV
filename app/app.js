@@ -4,8 +4,10 @@ $(function () {
     'use strict';
 
     //Use CORS proxy
-    $.ajaxPrefilter(function(options) {
-        options.url = "http://furious-stream-4406.herokuapp.com?src=" + encodeURIComponent(options.url);
+    jQuery.ajaxPrefilter(function(options) {
+        if (options.crossDomain && jQuery.support.cors) {
+            options.url = 'https://furious-stream-4406.herokuapp.com/' + options.url;
+        }
     });
 
     app.cache = new Burry.Store('ProgrammeTV');
